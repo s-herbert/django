@@ -1,12 +1,16 @@
 {% extends 'tethys/base.html' %}
 
 {% block content %}
-	{% for container in containers %}
+
 		<div class="collection">
-			<h1><a href="{%url 'container_detail' name=container.name%}">{{ container.name }} : {{container.count}}</a></h1>
+			<h1><a href="">{{ container.name }}</a></h1>
 			<div class="date">
 				<p>updated: {{ container.last_updated }}</p>
 			</div>
+			<div>Count : {{container.count}}</div>
+			<div class="doc-list">
+				<p>{{container.documents|linebreaksbr}}</p>
+			</div>
 		</div>
-	{% endfor %}
+
 {%endblock%}
