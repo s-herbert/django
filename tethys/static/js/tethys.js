@@ -42,8 +42,9 @@ $(function() {
 				var doc_list = json.docs.split(" ")
 				$(docs_id).empty(); //clear out the list
 				for (var i=0;i<doc_list.length;i++){
+					//http://localhost:9771/tethys-admin/collection/SpeciesAbbreviations/load_document/NOAA.NMFS.v2/
 					$(docs_id).append("<li id=\""+collection+"-"+doc_list[i]+"\">"
-										+"<a href=\"/tethys/load_document/"+collection+"/"+doc_list[i]+"/\" target=\"frame-"+collection+"\">"
+										+"<a href=\"/tethys-admin/collection/"+collection+"/load_document/"+doc_list[i]+"/\" target=\"frame-"+collection+"\">"
 										+doc_list[i]
 										+"</a>"
 										+"</li>")
