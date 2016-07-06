@@ -10,14 +10,17 @@ https://docs.djangoproject.com/en/1.9/howto/deployment/wsgi/
 import os,sys
 
 
-apache_configuration= os.path.dirname(__file__)
-project = os.path.dirname(apache_configuration)
-workspace = os.path.dirname(project)
-sys.path.append(workspace)
+mysite= os.path.dirname(__file__)
+project = os.path.dirname(mysite)
+
+sys.path.append(mysite)
 sys.path.append(project)
 
+activate_env_file = os.path.join(project,'django_env','Scripts','activate_this.py')
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
+execfile(activate_env_file, dict(__file__=activate_env_file))
+#os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
+os.environ['DJANGO_SETTINGS_MODULE'] = 'mysite.settings'
 from django.core.wsgi import get_wsgi_application
 
 application = get_wsgi_application()
