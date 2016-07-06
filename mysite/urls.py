@@ -19,6 +19,6 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^django/', admin.site.urls),
 	url(r'^blog/',include('blog.urls')),
-	url(r'^/',include('tethys.urls')),
-	url(r'^$',include('tethys.urls')),
+	url(r'^tethys/',include('tethys.urls')),
+	url(r'^$',include('tethys.urls'))
 ]
