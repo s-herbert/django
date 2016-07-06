@@ -112,8 +112,14 @@ function RequestURL(url,callback,ExtraData) { // based on: http://developer.mozi
         }
         if (!httpRequest) { return false;   }
         httpRequest.onreadystatechange = function() { callback(httpRequest,ExtraData); };
-        //httpRequest.open('GET', url, true);
-        httpRequest.send('');
+        try{
+        	httpRequest.send('');
+        }
+        catch(err){
+        	$('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+					" <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+					return false;
+        }
 		return true;
     }
 function CreateXMLDOM(XMLStr) 
