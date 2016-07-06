@@ -4,23 +4,24 @@
     <head>
         <title>Tethys Metadata</title>
 		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 
 		<!-- Optional theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-		<!--google font -->
-		<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
+		<!--google font
+		<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Oswald' type='text/css'> -->
 		<!--my css-->
 		<link rel="stylesheet" href="{% static 'css/tethys.css' %}">
 		
 		<!--jq-->
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="{% static 'js/jquery-3.0.0.min.js' %}"></script>
 		<!--myjs-->
 		<script src="{% static 'js/tethys.js' %}"></script>
     </head>
     <body>
 		<div class="page-header">
 			<h1><a href="/tethys">Tethys Metadata</a></h1>
+			<h4>v2.4</h4>
 		</div>
 		
 		<div class="content container">

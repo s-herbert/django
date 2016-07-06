@@ -1,13 +1,28 @@
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/Oswald-Regular.ttf') format('truetype'),
+	   url('../fonts/Oswald-Regular.woff2') format('woff2');
+  src: local('../fonts/Oswald-Regular.ttf') format('truetype');
+  
+}
+
+
+
+
+
 .page-header {
     background-color: #3CE8D7;
     margin-top: 0;
     padding: 20px 20px 20px 40px;
 }
 
-.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
+.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active  {
     color: #ffffff;
     font-size: 36pt;
     text-decoration: none;
+	
 }
 
 .content {
@@ -16,6 +31,14 @@
 
 h1, h2, h3, h4 {
     font-family: 'Oswald';
+}
+
+.page-header h4, .page-header h1{
+	color:ffffff;
+	display:inline;
+}
+.page-header h4{
+	float:right;
 }
 
 .date-list {
