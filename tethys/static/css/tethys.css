@@ -25,6 +25,11 @@ h1, h2, h3, h4 {
 .save {
     float: right;
 }
+.refresh-btn{
+	margin-left:20px
+}
+
+
 
 /*
 .post-form textarea, .post-form input {

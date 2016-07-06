@@ -3,7 +3,13 @@
 {% block content %}
 	{% for container in containers %}
 		<div class="collection">
-			<h1><a href="{%url 'container_detail' name=container.name%}">{{ container.name }} : {{container.count}}</a></h1>
+			
+			<h1>
+				<a href="{%url 'container_detail' name=container.name%}" >{{ container.name }}</a>:
+				<span class='count' id="count-{{container.name}}"> {{container.count}}</span>
+				{% csrf_token %}
+				<a class="btn btn-default refresh-btn" id="refresh-{{container.name}}" href=""><span class="glyphicon glyphicon-refresh"></span></a>
+			</h1>
 			<div class="date">
 				<p>updated: {{ container.last_updated }}</p>
 			</div>
