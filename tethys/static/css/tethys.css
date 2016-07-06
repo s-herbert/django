@@ -91,13 +91,13 @@ body {
 }
 
 .server-frame{
+	overflow: hidden;
 	float:right;
-	position:relative;
 	border-left:2px #BCD0E3 groove;
 	border-top: none;
 	border-right:none;
 	border-bottom:none;
 	width:100%;
 	height:80%;
-	overflow: hidden;
+	
 }

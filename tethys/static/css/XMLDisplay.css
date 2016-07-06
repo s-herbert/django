@@ -1,5 +1,10 @@
 @charset "utf-8";
 /* CSS Document */
+
+#XMLHolder{
+	overflow:auto;
+}
+
 .Utility {
 		color: black;
 }	
@@ -31,6 +36,6 @@
 	font-size:large;
 	color: #0F35A8;	
 	cursor:pointer;
-
 	vertical-align:middle;
 }
+
