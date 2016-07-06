@@ -4,11 +4,14 @@ $(function() {
 
 	//refresh container info
 	$('.refresh-btn').click(function(event){
+		$(this).toggleClass('active');
 		event.preventDefault();
 		console.log("refresh clicked!")  // sanity check
 		var collection = (this).id.slice(8)
 		console.log(collection);
 		refresh_collection(collection);
+		$(this).toggleClass('active');
+		$(this).toggleClass('selected')
 	});
 	
 	//convert newlines to br's
@@ -34,15 +37,16 @@ $(function() {
 				var count_id = "#count-" +collection
 				var updated_id = "#updated-"+collection
 				var docs_id = "#docs-"+collection //unorderd list
-				console.log(count_id)
-				$(count_id).text(json.count)
+				$(count_id).text(" "+json.count)
 				$(updated_id).text("updated: "+json.updated)
 				var doc_list = json.docs.split(" ")
 				$(docs_id).empty(); //clear out the list
-				console.log(doc_list)
 				for (var i=0;i<doc_list.length;i++){
-					console.log("repopulating: "+doc_list[i])
-					$(docs_id).append("<li id=\""+collection+"-"+doc_list[i]+"\">"+doc_list[i]+"</li>")
+					$(docs_id).append("<li id=\""+collection+"-"+doc_list[i]+"\">"
+										+"<a href=\"/tethys/load_document/"+collection+"/"+doc_list[i]+"/\" target=\"frame-"+collection+"\">"
+										+doc_list[i]
+										+"</a>"
+										+"</li>")
 				}
 				//$(docs_id).html(nl2br(json.docs,false))
 				console.log("success"); // another sanity check

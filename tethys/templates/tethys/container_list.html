@@ -6,13 +6,13 @@
 			
 			<h1>
 				<a class="btn btn-default refresh-btn" id="refresh-{{container.name}}" href=""><span class="glyphicon glyphicon-refresh"></span></a>
-				<a href="{%url 'container_detail' name=container.name%}" >{{ container.name }}</a>:
+				<a class ='collection-name' href="{%url 'container_detail' name=container.name%}" >{{ container.name }}:</a>
 				<span class='count' id="count-{{container.name}}"> {{container.count}}</span>
 				{% csrf_token %}
 				
 			</h1>
 			<div class="date-list">
-				<p id="updated-{{container.name}}">updated: {{ container.last_updated|date:"F, j, Y" }}, {{ container.last_updated|time:'H:i' }}</p>
+				<p id="updated-{{container.name}}">updated: {{ container.last_updated|date:"F j, Y" }}, {{ container.last_updated|time:'H:i' }}</p>
 			</div>
 		</div>
 	{% endfor %}

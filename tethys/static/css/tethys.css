@@ -26,7 +26,7 @@
 }
 
 .content {
-    margin-left: 40px;
+    margin-left: 24px;
 }
 
 h1, h2, h3, h4 {
@@ -90,7 +90,13 @@ body {
     color: #212F80;
 }
 
+h1 .collection-name, h1 .count{
+	
+	font-size:28px;
+}
+
 .server-frame{
+	display:inline;
 	overflow: hidden;
 	float:right;
 	border-left:2px #BCD0E3 groove;
