@@ -16,10 +16,16 @@
 				<ul class="doc-list" style="list-style-type:none" id="docs-{{container.name}}">
 				{%for document in container.document_set.all%}
 					<li id="{{container.name}}-{{document.name}}">
-					<a href="{%url 'load_document' doc_name=document.name collection=container.name%}" target="_blank">{{document.name}}</a>
+					<a href="{%url 'load_document' doc_name=document.name collection=container.name%}" target="frame-{{container.name}}">{{document.name}}</a>
 					</li>
 				{%endfor%}
 			</div>
 		</div>
 
+{%endblock%}
+
+{%block server_content %}
+<iframe class="server-frame" name="frame-{{container.name}}">
+
+</iframe>
 {%endblock%}
