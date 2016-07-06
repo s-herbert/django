@@ -3,13 +3,20 @@
 {% block content %}
 
 		<div class="collection">
-			<h1><a href="">{{ container.name }}</a></h1>
-			<div class="date">
-				<p>updated: {{ container.last_updated }}</p>
+			<h1>
+				<a href="">{{ container.name }}</a>
+				<a class="btn btn-default refresh-btn" id="refresh-{{container.name}}" href=""><span class="glyphicon glyphicon-refresh"></span></a>
+			</h1>
+			<div class="date-detail">
+				<p id="updated-{{container.name}}">updated: {{ container.last_updated|date:"F, j, Y" }}, {{ container.last_updated|time:'H:i' }}</p>
 			</div>
-			<div>Count : {{container.count}}</div>
-			<div class="doc-list">
-				<p>{{container.documents|linebreaksbr}}</p>
+			<b>Total: <span class='count' id="count-{{container.name}}">{{container.count}}</span></b>
+			<br></br>
+			<div>
+				<ul class="doc-list" style="list-style-type:none" id="docs-{{container.name}}">
+				{%for document in container.document_set.all%}
+					<li id="{{container.name}}-{{document.name}}">{{document.name}}</li>
+				{%endfor%}
 			</div>
 		</div>
 

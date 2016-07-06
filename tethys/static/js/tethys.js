@@ -11,6 +11,13 @@ $(function() {
 		refresh_collection(collection);
 	});
 	
+	//convert newlines to br's
+	function nl2br (str, is_xhtml) {   
+		var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';    
+		return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ breakTag +'$2');
+	}
+	
+	
 	
 	// AJAX for refresh
 	function refresh_collection(collection) {
@@ -24,9 +31,20 @@ $(function() {
 			success : function(json) {
 				//$('#post-text').val(''); // remove the value from the input
 				console.log(json); // log the returned json to the console
-				var count_id = "count-" +collection
+				var count_id = "#count-" +collection
+				var updated_id = "#updated-"+collection
+				var docs_id = "#docs-"+collection //unorderd list
 				console.log(count_id)
-				$('#'+count_id).text(json.count)
+				$(count_id).text(json.count)
+				$(updated_id).text("updated: "+json.updated)
+				var doc_list = json.docs.split(" ")
+				$(docs_id).empty(); //clear out the list
+				console.log(doc_list)
+				for (var i=0;i<doc_list.length;i++){
+					console.log("repopulating: "+doc_list[i])
+					$(docs_id).append("<li id=\""+collection+"-"+doc_list[i]+"\">"+doc_list[i]+"</li>")
+				}
+				//$(docs_id).html(nl2br(json.docs,false))
 				console.log("success"); // another sanity check
 			},
 

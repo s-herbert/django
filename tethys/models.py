@@ -12,9 +12,8 @@ class TethysServer(models.Model):
 	
 
 class Container(models.Model):
-	name = models.CharField(max_length=100)
+	name = models.CharField(max_length=100, unique=True)
 	count = models.PositiveIntegerField(default = 0)
-	documents = models.TextField(blank=True)
 	server = models.ForeignKey(TethysServer,on_delete=models.CASCADE)
 	last_updated = models.DateTimeField(blank=True,null=True)
 	last_modified = models.DateTimeField(blank=True,null=True)
@@ -28,12 +27,13 @@ class Container(models.Model):
 		#get count and docsfor this self.name and server
 		xquery ='''
 		let $alldocs:= for $doc in collection("%s")
-			return substring(base-uri($doc),22) 
+			return substring(base-uri($doc),10) 
 		return 
 		<Results>
 			<Count>{count($alldocs)}</Count>
 			{
 			for $d in $alldocs 
+				order by $d
 				return <Document>{$d}</Document>
 			}
 		</Results>
@@ -44,15 +44,22 @@ class Container(models.Model):
 		#parse xml
 		tree = ElementTree.fromstring(result.text)
 		self.count = int(tree[COUNT_ELEMENT].text)
-		documents = [doc.text for doc in tree.iter('Document')]
-		self.documents = '\n'.join(documents)
+		documents = [doc.text.replace(self.name+'/','') for doc in tree.iter('Document')]
+		self.document_set.all().delete()
+		for doc in documents:
+			self.document_set.create(name=doc, container=self)
 		self.save()
 	
 	
 	def __str__(self):
 		return self.name
+		
+		
+class Document(models.Model):
+	name = models.CharField(max_length=200)
+	added = models.DateTimeField(blank=True,null=True)
+	container = models.ForeignKey(Container,on_delete=models.CASCADE)
 	
-	
-#class Document(models.Model):
-#	pass
+	def __str__(self):
+		return self.name
 	
