@@ -8,7 +8,7 @@
 				<a class="btn btn-default refresh-btn" id="refresh-{{container.name}}" href=""><span class="glyphicon glyphicon-refresh"></span></a>
 			</h1>
 			<div class="date-detail">
-				<p id="updated-{{container.name}}">updated: {{ container.last_updated|date:"F, j, Y" }}, {{ container.last_updated|time:'H:i' }}</p>
+				<p id="updated-{{container.name}}">updated: {{ container.last_updated|date:"F j, Y" }}, {{ container.last_updated|time:'H:i' }}</p>
 			</div>
 			<b>Total: <span class='count' id="count-{{container.name}}">{{container.count}}</span></b>
 			<br></br>

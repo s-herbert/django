@@ -30,7 +30,9 @@ def refresh_container(request):
 
 		
 		container = Container.objects.get(name=collection)
-		container.refresh()
+		result = container.refresh()
+		
+		print result
 		
 		updated_time = timezone.localtime(container.last_updated).strftime('%B %#d, %Y, %H:%M')
 		doc_names = container.document_set.values_list('name',flat=True).order_by('name')

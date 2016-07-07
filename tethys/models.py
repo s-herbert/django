@@ -49,6 +49,7 @@ class Container(models.Model):
 		for doc in documents:
 			self.document_set.create(name=doc, container=self)
 		self.save()
+		return result
 	
 	
 	def __str__(self):

@@ -19,6 +19,7 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^django/', admin.site.urls),
 	url(r'^blog/',include('blog.urls')),
-	url(r'^collection/',include('tethys.urls')),
-	url(r'^$',include('tethys.urls'))
+	#url(r'^collection/',include('tethys.urls')),
+	#url(r'^$',include('tethys.urls')),
+	url(r'^index/',include('tethys.urls')),
 ]
