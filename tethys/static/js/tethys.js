@@ -4,14 +4,14 @@ $(function() {
 
 	//refresh container info
 	$('.refresh-btn').click(function(event){
-		$(this).toggleClass('active');
+
 		event.preventDefault();
 		console.log("refresh clicked!")  // sanity check
+		
 		var collection = (this).id.slice(8)
 		console.log(collection);
 		refresh_collection(collection);
-		$(this).toggleClass('active');
-		$(this).toggleClass('selected')
+
 	});
 	
 	//convert newlines to br's
@@ -25,8 +25,9 @@ $(function() {
 	// AJAX for refresh
 	function refresh_collection(collection) {
 		console.log("refresh is working!") // sanity check
+		var thisUrl = $(location).attr('href');
 		$.ajax({
-			url : "refresh_container/", // the endpoint
+			url : thisUrl+"/refresh_container/", // the endpoint
 			type : "GET", // http method
 			data : { the_collection : collection }, // data sent with the post request
 
@@ -43,7 +44,7 @@ $(function() {
 				$(docs_id).empty(); //clear out the list
 				for (var i=0;i<doc_list.length;i++){
 					$(docs_id).append("<li id=\""+collection+"-"+doc_list[i]+"\">"
-										+"<a href=\"/tethys-admin/collection/"+collection+"/load_document/"+doc_list[i]+"/\" target=\"frame-"+collection+"\">"
+										+"<a href=\"/tethys-admin/"+collection+"/load_document/"+doc_list[i]+"/\" target=\"frame-"+collection+"\">"
 										+doc_list[i]
 										+"</a>"
 										+"</li>")
