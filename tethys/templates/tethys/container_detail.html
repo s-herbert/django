@@ -25,7 +25,14 @@
 {%endblock%}
 
 {%block server_content %}
-<iframe class="server-frame" name="frame-{{container.name}}" id="results">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Results</h3>
+  </div>
+  <div class="panel-body">
+    <iframe class="server-frame" name="frame-{{container.name}}" id="results">
 
-</iframe>
+	</iframe>
+  </div>
+</div>
 {%endblock%}
