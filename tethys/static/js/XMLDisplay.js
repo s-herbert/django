@@ -160,7 +160,7 @@ function ShowXML(xmlHolderElement,RootNode,indent)
       //AddTextNode(TagEmptyElement,'=','Utility') ;
       AddTextNode(TagEmptyElement,'"' + CurrentAttribute.nodeValue + '"','AttributeValue') ;
     }
-    AddTextNode(TagEmptyElement,' />') ;
+    //AddTextNode(TagEmptyElement,' />') ;
     xmlHolderElement.appendChild(TagEmptyElement);	
     //SetVisibility(TagEmptyElement,true);    
 	}
@@ -199,9 +199,9 @@ function ShowXML(xmlHolderElement,RootNode,indent)
     
     for (var i = 0; RootNode.attributes && i < RootNode.attributes.length; ++i) {
         CurrentAttribute  = RootNode.attributes.item(i);
-        AddTextNode(TagElement,' ' + CurrentAttribute.nodeName ,'AttributeName') ;
+        AddTextNode(TagElement,' @' + CurrentAttribute.nodeName ,'AttributeName') ;
         //AddTextNode(TagElement,'=','Utility') ;
-        AddTextNode(TagElement,'"' + CurrentAttribute.nodeValue + '"','AttributeValue') ;
+        AddTextNode(TagElement,' "' + CurrentAttribute.nodeValue + '"','AttributeValue') ;
     }
     //AddTextNode(TagElement,'>','Utility') ;
     TagElement.appendChild(document.createElement('br'));
@@ -236,8 +236,19 @@ function ShowXML(xmlHolderElement,RootNode,indent)
 function AddTextNode(ParentNode,Text,Class) 
 {
 	NewNode = document.createElement('span');
-	if (Class) {  NewNode.className  = Class;}
-	if (Text) { NewNode.appendChild(document.createTextNode(Text)); }
+	if (Class === 'Clickable'){
+		switch(Text){
+			case "+": 
+				NewNode.className = "glyphicon glyphicon-triangle-right";
+				break;
+			case "-": 
+				NewNode.className = "glyphicon glyphicon-triangle-bottom";
+				break;
+		}
+	} else {
+		if (Class) {  NewNode.className  = Class;}
+		if (Text) { NewNode.appendChild(document.createTextNode(Text)); }
+	}
 	if (ParentNode) { ParentNode.appendChild(NewNode); }
 	return NewNode;		
 }

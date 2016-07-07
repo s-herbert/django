@@ -33,11 +33,7 @@
 }
 
 
-.Clickable {	
-	font-weight:900;
-	font-size:large;
-	color: #0F35A8;	
+.glyphicon-triangle-right, .glyphicon-triangle-bottom {	
 	cursor:pointer;
-	vertical-align:middle;
 }
 
