@@ -32,12 +32,12 @@ $(function() {
 	
 
 
-    $(function() {
+  //  $(function() {
         $('#select').filterByText($('#text-filter'), false);
 //      $("select option").click(function(){
   //      alert(1);
     //  });
-    });
+  //  });
 	
 	
 	
@@ -49,10 +49,11 @@ $(function() {
 
 		event.preventDefault();
 		console.log("refresh clicked!")  // sanity check
-		
+		$('#text-filter').empty();
 		var collection = (this).id.slice(8)
 		console.log(collection);
 		refresh_collection(collection);
+		(this).blur();
 
 	});
 	
@@ -79,17 +80,24 @@ $(function() {
 				console.log(json); // log the returned json to the console
 				var count_id = "#count-" +collection
 				var updated_id = "#updated-"+collection
-				var docs_id = "#docs-"+collection //unorderd list
+				//var docs_id = "#docs-"+collection //unorderd list
+				var docs_id = "#select" //select multiple
 				$(count_id).text(" "+json.count)
 				$(updated_id).text("updated: "+json.updated)
 				var doc_list = json.docs.split(" ")
 				$(docs_id).empty(); //clear out the list
 				for (var i=0;i<doc_list.length;i++){
+					/* for list
 					$(docs_id).append("<li id=\""+collection+"-"+doc_list[i]+"\">"
 										+"<a href=\"/tethys-admin/"+collection+"/load_document/"+doc_list[i]+"/\" target=\"frame-"+collection+"\">"
 										+doc_list[i]
 										+"</a>"
 										+"</li>")
+					*/
+					
+					/* for select */
+					$(docs_id).append("<option>"+doc_list[i]+"</option>");
+					console.log("appended " +doc_list[i]);
 				}
 				//$(docs_id).html(nl2br(json.docs,false))
 				console.log("success"); // another sanity check

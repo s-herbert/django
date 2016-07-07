@@ -51,6 +51,10 @@ h1, h2, h3, h4 {
     list-style-type: none;
 }
 
+.doc-selection{
+	height:100%;
+}
+
 .date-detail{
 	color: #828282;
 	
@@ -60,6 +64,10 @@ h1, h2, h3, h4 {
 }
 .refresh-btn{
 	margin-left:20px
+}
+
+.doc-selection{
+	size:20;
 }
 
 body {
@@ -79,7 +87,9 @@ body {
     margin-right: 20px;
 }
 
-
+.row{
+	padding: 10px;
+}
 
 .container {
     margin-bottom: 70px;
@@ -98,8 +108,7 @@ h1 .collection-name, h1 .count{
 .server-frame{
 	display:inline;
 	overflow: hidden;
-	float:right;
-	border-left:2px #BCD0E3 groove;
+	border-left:none;
 	border-top: none;
 	border-right:none;
 	border-bottom:none;

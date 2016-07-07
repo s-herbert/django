@@ -13,13 +13,13 @@
 			<b>Total: <span class='count' id="count-{{container.name}}">{{container.count}}</span></b>
 			<br></br>
 			<div class = 'row'>
-				<div class='col-md-4'>
-					<input id="text-filter" type="text"/>
+				<div class='col-md-8'>
+					<input id="text-filter" type="text" size="36" value="Type here to filter.."/>
 				</div>
 			</div>
 			<div class='row'>
-				<div class='col-md-7'>
-					<select multiple class='form-control' id = "select">
+				<div class='col-md-12'>
+					<select multiple class='doc-selection form-control' id = "select" size="20">
 					{%for document in container.document_set.all%}
 					<option>{{document.name}}</option>
 					{%endfor%}
@@ -31,7 +31,16 @@
 {%endblock%}
 
 {%block server_content %}
-<iframe class="server-frame" name="frame-{{container.name}}" id="results">
 
-</iframe>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Results</h3>
+  </div>
+  <div class="panel-body">
+    <iframe class="server-frame" name="frame-{{container.name}}" id="results">
+
+	</iframe>
+  </div>
+</div>
+
 {%endblock%}
