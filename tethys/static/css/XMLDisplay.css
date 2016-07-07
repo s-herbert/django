@@ -6,7 +6,7 @@
 }
 
 .Utility {
-		color: black;
+	color: black;
 }	
 .NodeName {
 	font-weight:bold;
@@ -31,6 +31,8 @@
 	padding-top:0px;
 	margin-top:10px;
 }
+
+
 .Clickable {	
 	font-weight:900;
 	font-size:large;
