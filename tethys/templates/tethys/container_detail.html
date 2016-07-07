@@ -12,13 +12,19 @@
 			</div>
 			<b>Total: <span class='count' id="count-{{container.name}}">{{container.count}}</span></b>
 			<br></br>
-			<div>
-				<ul class="doc-list" style="list-style-type:none" id="docs-{{container.name}}">
-				{%for document in container.document_set.all%}
-					<li id="{{container.name}}-{{document.name}}">
-					<a href="{%url 'load_document' doc_name=document.name collection=container.name%}" target="frame-{{container.name}}">{{document.name}}</a>
-					</li>
-				{%endfor%}
+			<div class = 'row'>
+				<div class='col-md-4'>
+					<input id="text-filter" type="text"/>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='col-md-7'>
+					<select multiple class='form-control' id = "select">
+					{%for document in container.document_set.all%}
+					<option>{{document.name}}</option>
+					{%endfor%}
+					</select>
+				</div>
 			</div>
 		</div>
 
